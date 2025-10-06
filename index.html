@@ -39,6 +39,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            text-transform: uppercase; /* Letras maiúsculas via CSS */
         }
         .form-group input[type="text"],
         .form-group input[type="email"],
@@ -79,7 +80,7 @@
             background-color: #128C7E;
         }
 
-        /* --- ESTILOS DO NOVO MODAL (CAIXA DE DIÁLOGO) --- */
+        /* --- ESTILOS DO MODAL (CAIXA DE DIÁLOGO) --- */
         .modal-overlay {
             display: none; /* Inicia oculto */
             position: fixed;
@@ -127,43 +128,72 @@
 
     <div class="container">
         <div class="header">
-             <img src="https://lh3.googleusercontent.com/d/1STN015c0j-09cTmwXSXOaKTAwgoEFkSc" alt="Logo A.I.A.P.I.R">
-            <h1>FICHA DO ASSOCIADO</h1>
+            <img src="https://lh3.googleusercontent.com/d/1STN015c0j-09cTmwXSXOaKTAwgoEFkSc" alt="Logo da A.I.A.P.I.R">
+            <h1>Ficha do Associado</h1>
         </div>
 
         <form id="cadastroForm">
             <div class="form-group">
-                <label for="nomeCompleto">NOME COMPLETO</label>
+                <label for="nomeCompleto">Nome Completo</label>
                 <input type="text" id="nomeCompleto" name="nomeCompleto" required>
             </div>
             <div class="form-group">
-                <label for="endereco">ENDEREÇO</label>
-                <input type="text" id="endereco" name="endereco">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" name="endereco" placeholder="Ex: Rua das Flores, 123">
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="bairro">BAIRRO</label>
+                    <label for="bairro">Bairro</label>
                     <input type="text" id="bairro" name="bairro">
                 </div>
                 <div class="form-group">
                     <label for="cep">CEP</label>
-                    <input type="text" id="cep" name="cep">
+                    <input type="text" id="cep" name="cep" placeholder="00000-000" pattern="\d{5}-\d{3}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="cidade">CIDADE</label>
+                    <label for="cidade">Cidade</label>
                     <input type="text" id="cidade" name="cidade">
                 </div>
                 <div class="form-group">
-                    <label for="estado">ESTADO</label>
-                    <input type="text" id="estado" name="estado">
+                    <label for="estado">Estado</label>
+                     <select id="estado" name="estado">
+                        <option value="">Selecione</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" name="cpf">
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
                 </div>
                 <div class="form-group">
                     <label for="rg">RG</label>
@@ -172,44 +202,76 @@
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="telResidencial">TELEFONE RESIDENCIAL</label>
-                    <input type="tel" id="telResidencial" name="telResidencial">
+                    <label for="telResidencial">Telefone Residencial</label>
+                    <input type="tel" id="telResidencial" name="telResidencial" placeholder="(00) 0000-0000">
                 </div>
                 <div class="form-group">
-                    <label for="telCelular">TELEFONE CELULAR</label>
-                    <input type="tel" id="telCelular" name="telCelular" required>
+                    <label for="telCelular">Telefone Celular</label>
+                    <input type="tel" id="telCelular" name="telCelular" placeholder="(00) 00000-0000" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="email">E-MAIL</label>
-                <input type="email" id="email" name="email">
-            </div>
-            <div class="form-group">
-                <label for="dataNascimento">DATA DE NASCIMENTO</label>
-                <input type="date" id="dataNascimento" name="dataNascimento">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com">
             </div>
             <div class="form-row">
-                <div class="form-group">
-                    <label for="localNascimento">LOCAL DE NASCIMENTO</label>
-                    <input type="text" id="localNascimento" name="localNascimento">
-                </div>
                  <div class="form-group">
-                    <label for="estadoNascimento">ESTADO.</label>
-                    <input type="text" id="estadoNascimento" name="estadoNascimento">
+                     <label for="dataNascimento">Data de Nascimento</label>
+                     <input type="text" id="dataNascimento" name="dataNascimento" placeholder="DD/MM/AAAA">
+                 </div>
+                 <div class="form-group">
+                    <label for="estadoNascimento">Estado</label>
+                    <select id="estadoNascimento" name="estadoNascimento">
+                        <option value="">Selecione</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="aposentadoDesde">APOSENTADO DESDE</label>
+                <label for="aposentadoDesde">Aposentado Desde</label>
                 <select id="aposentadoDesde" name="aposentadoDesde">
                     <option value="">Selecione o ano</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="estadoCivil">ESTADO CIVIL</label>
-                <input type="text" id="estadoCivil" name="estadoCivil">
+                <label for="estadoCivil">Estado Civil</label>
+                <select id="estadoCivil" name="estadoCivil">
+                    <option value="">Selecione</option>
+                    <option value="Solteiro(a)">Solteiro(a)</option>
+                    <option value="Casado(a)">Casado(a)</option>
+                    <option value="Divorciado(a)">Divorciado(a)</option>
+                    <option value="Viúvo(a)">Viúvo(a)</option>
+                    <option value="União Estável">União Estável</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="conjuge">CÔNJUGE</label>
+                <label for="conjuge">Cônjuge</label>
                 <input type="text" id="conjuge" name="conjuge">
             </div>
             <div class="form-group">
@@ -232,7 +294,6 @@
     </div>
 
     <script>
-        // Variável global para guardar o link do WhatsApp
         let whatsAppLink = '';
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -252,31 +313,34 @@
             const modalBtn = document.getElementById('modalConfirmBtn');
 
             modalBtn.onclick = function() {
-                modal.style.display = "none"; // Esconde o modal
+                modal.style.display = "none";
                 if (whatsAppLink) {
-                    window.open(whatsAppLink, '_blank'); // Abre o link do WhatsApp
+                    window.open(whatsAppLink, '_blank');
                 }
             }
         });
 
-        function formatarData(data) {
-            if (!data) return "";
-            const partes = data.split('-');
-            return `${partes[2]}/${partes[1]}/${partes[0]}`;
-        }
-
         function enviarWhatsApp() {
             const numeroWhatsApp = "+5543984399533";
 
-            // Coleta e validação dos dados
             const nome = document.getElementById('nomeCompleto').value;
             const telCelular = document.getElementById('telCelular').value;
-            if (!telCelular || !nome) {
+            if (!nome || !telCelular) {
                 alert("Por favor, preencha pelo menos o Nome Completo e o Telefone Celular.");
                 return;
             }
 
-            // Coleta o resto dos dados
+            // --- LÓGICA DE MENSAGEM MELHORADA ---
+            let mensagem = `*NOVO CADASTRO A.I.A.P.I.R*\n\n`;
+            
+            // Função auxiliar para adicionar uma linha à mensagem apenas se o campo tiver valor
+            const addLine = (label, value) => {
+                if (value && value.trim() !== '') {
+                    mensagem += `*${label}:* ${value}\n`;
+                }
+            };
+            
+            // Coleta dos valores
             const endereco = document.getElementById('endereco').value;
             const bairro = document.getElementById('bairro').value;
             const cep = document.getElementById('cep').value;
@@ -286,39 +350,40 @@
             const rg = document.getElementById('rg').value;
             const telResidencial = document.getElementById('telResidencial').value;
             const email = document.getElementById('email').value;
-            const dataNascimento = formatarData(document.getElementById('dataNascimento').value);
-            const aposentadoDesde = document.getElementById('aposentadoDesde').value;
+            const dataNascimento = document.getElementById('dataNascimento').value;
             const localNascimento = document.getElementById('localNascimento').value;
             const estadoNascimento = document.getElementById('estadoNascimento').value;
+            const aposentadoDesde = document.getElementById('aposentadoDesde').value;
             const estadoCivil = document.getElementById('estadoCivil').value;
             const conjuge = document.getElementById('conjuge').value;
 
-            // Formatação da mensagem
-            let mensagem = `*NOVO CADASTRO A.I.A.P.I.R*\n\n`;
-            mensagem += `*Nome Completo:* ${nome}\n`;
-            mensagem += `*Endereço:* ${endereco}\n`;
-            mensagem += `*Bairro:* ${bairro}\n`;
-            mensagem += `*CEP:* ${cep}\n`;
-            mensagem += `*Cidade/Estado:* ${cidade}/${estado}\n`;
-            mensagem += `*CPF:* ${cpf}\n`;
-            mensagem += `*RG:* ${rg}\n`;
-            mensagem += `*Telefone Residencial:* ${telResidencial}\n`;
-            mensagem += `*Telefone Celular:* ${telCelular}\n`;
-            mensagem += `*E-mail:* ${email}\n`;
-            mensagem += `*Data de Nascimento:* ${dataNascimento}\n`;
-            mensagem += `*Local de Nascimento:* ${localNascimento}/${estadoNascimento}\n`;
-            mensagem += `*Aposentado Desde:* ${aposentadoDesde}\n`;
-            mensagem += `*Estado Civil:* ${estadoCivil}\n`;
-            mensagem += `*Cônjuge:* ${conjuge}\n`;
+            // Construção da mensagem
+            addLine('Nome Completo', nome);
+            addLine('Endereço', endereco);
+            addLine('Bairro', bairro);
+            addLine('CEP', cep);
+            if (cidade || estado) {
+                mensagem += `*Cidade/Estado:* ${cidade}/${estado}\n`;
+            }
+            addLine('CPF', cpf);
+            addLine('RG', rg);
+            addLine('Telefone Residencial', telResidencial);
+            addLine('Telefone Celular', telCelular);
+            addLine('E-mail', email);
+            addLine('Data de Nascimento', dataNascimento);
+            if (localNascimento || estadoNascimento) {
+                mensagem += `*Local de Nascimento:* ${localNascimento}/${estadoNascimento}\n`;
+            }
+            addLine('Aposentado Desde', aposentadoDesde);
+            addLine('Estado Civil', estadoCivil);
+            addLine('Cônjuge', conjuge);
             
             const mensagemCodificada = encodeURIComponent(mensagem);
 
-            // Guarda o link na variável global e exibe o modal
             whatsAppLink = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
             document.getElementById('customModal').style.display = 'flex';
         }
     </script>
 
 </body>
-
 </html>
