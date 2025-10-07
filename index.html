@@ -39,7 +39,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            text-transform: uppercase; /* Letras maiúsculas via CSS */
+            text-transform: uppercase;
         }
         .form-group input[type="text"],
         .form-group input[type="email"],
@@ -79,36 +79,25 @@
         .button:hover {
             background-color: #128C7E;
         }
-
-        /* --- ESTILOS DO MODAL (CAIXA DE DIÁLOGO) --- */
         .modal-overlay {
-            display: none; /* Inicia oculto */
+            display: none;
             position: fixed;
             z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
         }
         .modal-content {
             background-color: #fefefe;
-            margin: auto;
             padding: 20px;
-            border: 1px solid #888;
             border-radius: 8px;
             width: 90%;
             max-width: 400px;
             text-align: center;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        }
-        .modal-content p {
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 20px;
         }
         #modalConfirmBtn {
             background-color: #4CAF50;
@@ -118,9 +107,6 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-        }
-        #modalConfirmBtn:hover {
-            background-color: #45a049;
         }
     </style>
 </head>
@@ -132,7 +118,7 @@
             <h1>Ficha do Associado</h1>
         </div>
 
-        <form id="cadastroForm">
+        <form id="cadastroForm" onsubmit="return false;">
             <div class="form-group">
                 <label for="nomeCompleto">Nome Completo</label>
                 <input type="text" id="nomeCompleto" name="nomeCompleto" required>
@@ -148,7 +134,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cep">CEP</label>
-                    <input type="text" id="cep" name="cep" placeholder="00000-000" pattern="\d{5}-\d{3}">
+                    <input type="text" id="cep" name="cep" placeholder="00000-000">
                 </div>
             </div>
             <div class="form-row">
@@ -160,40 +146,14 @@
                     <label for="estado">Estado</label>
                      <select id="estado" name="estado">
                         <option value="">Selecione</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
+                        <option value="AC">Acre</option><option value="AL">Alagoas</option><option value="AP">Amapá</option><option value="AM">Amazonas</option><option value="BA">Bahia</option><option value="CE">Ceará</option><option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option><option value="GO">Goiás</option><option value="MA">Maranhão</option><option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option><option value="MG">Minas Gerais</option><option value="PA">Pará</option><option value="PB">Paraíba</option><option value="PR">Paraná</option><option value="PE">Pernambuco</option><option value="PI">Piauí</option><option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option><option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="SC">Santa Catarina</option><option value="SP">São Paulo</option><option value="SE">Sergipe</option><option value="TO">Tocantins</option>
                     </select>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00">
                 </div>
                 <div class="form-group">
                     <label for="rg">RG</label>
@@ -214,42 +174,20 @@
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com">
             </div>
+            <div class="form-group">
+                <label for="dataNascimento">Data de Nascimento</label>
+                <input type="text" id="dataNascimento" name="dataNascimento" placeholder="DD/MM/AAAA">
+            </div>
             <div class="form-row">
-                 <div class="form-group">
-                     <label for="dataNascimento">Data de Nascimento</label>
-                     <input type="text" id="dataNascimento" name="dataNascimento" placeholder="DD/MM/AAAA">
-                 </div>
+                <div class="form-group">
+                    <label for="localNascimento">Local de Nascimento</label>
+                    <input type="text" id="localNascimento" name="localNascimento">
+                </div>
                  <div class="form-group">
                     <label for="estadoNascimento">Estado</label>
                     <select id="estadoNascimento" name="estadoNascimento">
                         <option value="">Selecione</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
+                        <option value="AC">Acre</option><option value="AL">Alagoas</option><option value="AP">Amapá</option><option value="AM">Amazonas</option><option value="BA">Bahia</option><option value="CE">Ceará</option><option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option><option value="GO">Goiás</option><option value="MA">Maranhão</option><option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option><option value="MG">Minas Gerais</option><option value="PA">Pará</option><option value="PB">Paraíba</option><option value="PR">Paraná</option><option value="PE">Pernambuco</option><option value="PI">Piauí</option><option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option><option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="SC">Santa Catarina</option><option value="SP">São Paulo</option><option value="SE">Sergipe</option><option value="TO">Tocantins</option>
                     </select>
                 </div>
             </div>
@@ -278,9 +216,7 @@
                 <p>Solicito minha filiação ao AIAPIR – ASSOCIAÇÃO DE IDOSOS, APOSENTADOS E PENSIONISTAS DE IBIPORÃ E REGIÃO.</p>
             </div>
             <button type="button" class="button" onclick="enviarWhatsApp()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
                 Enviar via WhatsApp
             </button>
         </form>
@@ -297,7 +233,7 @@
         let whatsAppLink = '';
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Popula o seletor de ano
+            // Popula o seletor de ano (não precisa mexer)
             const anoAtual = new Date().getFullYear();
             const anoInicial = 1950;
             const selectAno = document.getElementById('aposentadoDesde');
@@ -308,7 +244,7 @@
                 selectAno.appendChild(option);
             }
 
-            // Adiciona o evento de clique ao botão de confirmação do modal
+            // Lógica do modal (não precisa mexer)
             const modal = document.getElementById('customModal');
             const modalBtn = document.getElementById('modalConfirmBtn');
 
@@ -320,67 +256,61 @@
             }
         });
 
+        // --- FUNÇÃO JAVASCRIPT CORRIGIDA E MAIS ROBUSTA ---
         function enviarWhatsApp() {
             const numeroWhatsApp = "+5543984399533";
 
-            const nome = document.getElementById('nomeCompleto').value;
-            const telCelular = document.getElementById('telCelular').value;
-            if (!nome || !telCelular) {
+            // 1. Validação dos campos obrigatórios
+            const nome = document.getElementById('nomeCompleto').value.trim();
+            const telCelular = document.getElementById('telCelular').value.trim();
+            
+            if (nome === '' || telCelular === '') {
                 alert("Por favor, preencha pelo menos o Nome Completo e o Telefone Celular.");
-                return;
+                return; // Para a execução da função aqui
             }
 
-            // --- LÓGICA DE MENSAGEM MELHORADA ---
-            let mensagem = `*NOVO CADASTRO A.I.A.P.I.R*\n\n`;
-            
-            // Função auxiliar para adicionar uma linha à mensagem apenas se o campo tiver valor
-            const addLine = (label, value) => {
-                if (value && value.trim() !== '') {
-                    mensagem += `*${label}:* ${value}\n`;
-                }
-            };
-            
-            // Coleta dos valores
-            const endereco = document.getElementById('endereco').value;
-            const bairro = document.getElementById('bairro').value;
-            const cep = document.getElementById('cep').value;
-            const cidade = document.getElementById('cidade').value;
-            const estado = document.getElementById('estado').value;
-            const cpf = document.getElementById('cpf').value;
-            const rg = document.getElementById('rg').value;
-            const telResidencial = document.getElementById('telResidencial').value;
-            const email = document.getElementById('email').value;
-            const dataNascimento = document.getElementById('dataNascimento').value;
-            const localNascimento = document.getElementById('localNascimento').value;
+            // 2. Coleta de todos os outros valores
+            const endereco = document.getElementById('endereco').value.trim();
+            const bairro = document.getElementById('bairro').value.trim();
+            const cep = document.getElementById('cep').value.trim();
+            const cidade = document.getElementById('cidade').value.trim();
+            const estado = document.getElementById('estado').value; // .trim() não é necessário para select
+            const cpf = document.getElementById('cpf').value.trim();
+            const rg = document.getElementById('rg').value.trim();
+            const telResidencial = document.getElementById('telResidencial').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const dataNascimento = document.getElementById('dataNascimento').value.trim();
+            const localNascimento = document.getElementById('localNascimento').value.trim();
             const estadoNascimento = document.getElementById('estadoNascimento').value;
             const aposentadoDesde = document.getElementById('aposentadoDesde').value;
             const estadoCivil = document.getElementById('estadoCivil').value;
-            const conjuge = document.getElementById('conjuge').value;
+            const conjuge = document.getElementById('conjuge').value.trim();
 
-            // Construção da mensagem
-            addLine('Nome Completo', nome);
-            addLine('Endereço', endereco);
-            addLine('Bairro', bairro);
-            addLine('CEP', cep);
-            if (cidade || estado) {
-                mensagem += `*Cidade/Estado:* ${cidade}/${estado}\n`;
-            }
-            addLine('CPF', cpf);
-            addLine('RG', rg);
-            addLine('Telefone Residencial', telResidencial);
-            addLine('Telefone Celular', telCelular);
-            addLine('E-mail', email);
-            addLine('Data de Nascimento', dataNascimento);
-            if (localNascimento || estadoNascimento) {
-                mensagem += `*Local de Nascimento:* ${localNascimento}/${estadoNascimento}\n`;
-            }
-            addLine('Aposentado Desde', aposentadoDesde);
-            addLine('Estado Civil', estadoCivil);
-            addLine('Cônjuge', conjuge);
+            // 3. Montagem da mensagem (verificando se cada campo tem valor antes de adicionar)
+            let mensagem = `*NOVO CADASTRO A.I.A.P.I.R*\n\n`;
             
-            const mensagemCodificada = encodeURIComponent(mensagem);
+            mensagem += `*Nome Completo:* ${nome}\n`;
+            mensagem += `*Telefone Celular:* ${telCelular}\n`;
 
+            if (telResidencial) mensagem += `*Telefone Residencial:* ${telResidencial}\n`;
+            if (endereco) mensagem += `*Endereço:* ${endereco}\n`;
+            if (bairro) mensagem += `*Bairro:* ${bairro}\n`;
+            if (cep) mensagem += `*CEP:* ${cep}\n`;
+            if (cidade || estado) mensagem += `*Cidade/Estado:* ${cidade}/${estado}\n`;
+            if (cpf) mensagem += `*CPF:* ${cpf}\n`;
+            if (rg) mensagem += `*RG:* ${rg}\n`;
+            if (email) mensagem += `*E-mail:* ${email}\n`;
+            if (dataNascimento) mensagem += `*Data de Nascimento:* ${dataNascimento}\n`;
+            if (localNascimento || estadoNascimento) mensagem += `*Local de Nascimento:* ${localNascimento}/${estadoNascimento}\n`;
+            if (aposentadoDesde) mensagem += `*Aposentado Desde:* ${aposentadoDesde}\n`;
+            if (estadoCivil) mensagem += `*Estado Civil:* ${estadoCivil}\n`;
+            if (conjuge) mensagem += `*Cônjuge:* ${conjuge}\n`;
+
+            // 4. Codificação e criação do link
+            const mensagemCodificada = encodeURIComponent(mensagem);
             whatsAppLink = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+            
+            // 5. Exibição do modal de confirmação
             document.getElementById('customModal').style.display = 'flex';
         }
     </script>
