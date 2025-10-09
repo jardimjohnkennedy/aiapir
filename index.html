@@ -1,3 +1,9 @@
+<body>
+    <a href="#" class="btn-representante">Área Representante</a>
+
+    <div class="container">
+    
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,6 +19,38 @@
             display: flex;
             justify-content: center;
         }
+        
+        /* --- ESTILO DO BOTÃO ÁREA REPRESENTANTE --- */
+        .btn-representante {
+            position: fixed; /* Fixa o botão na tela, mesmo com a rolagem */
+            top: 20px;       /* 20 pixels de distância do topo */
+            right: 20px;      /* 20 pixels de distância da direita */
+            background-color: #0d6efd; /* Um tom de azul profissional */
+            color: white;
+            padding: 8px 16px; /* Espaçamento interno (altura e largura) */
+            border-radius: 50px; /* Deixa as bordas totalmente redondas (formato de pílula) */
+            text-decoration: none; /* Remove o sublinhado do link */
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra suave */
+            z-index: 1001; /* Garante que ele fique acima de outros elementos */
+            transition: background-color 0.2s ease-in-out; /* Efeito suave ao passar o mouse */
+        }
+
+        .btn-representante:hover {
+            background-color: #0b5ed7; /* Cor um pouco mais escura no hover */
+        }
+
+        /* Ajuste para telas menores (celulares) */
+        @media (max-width: 600px) {
+            .btn-representante {
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
         .container {
             background-color: #fff;
             padding: 25px;
@@ -111,6 +149,8 @@
     </style>
 </head>
 <body>
+
+    <a href="index2.html" class="btn-representante">Área Representante</a>
 
     <div class="container">
         <div class="header">
@@ -274,7 +314,7 @@
             const bairro = document.getElementById('bairro').value.trim();
             const cep = document.getElementById('cep').value.trim();
             const cidade = document.getElementById('cidade').value.trim();
-            const estado = document.getElementById('estado').value; // .trim() não é necessário para select
+            const estado = document.getElementById('estado').value;
             const cpf = document.getElementById('cpf').value.trim();
             const rg = document.getElementById('rg').value.trim();
             const telResidencial = document.getElementById('telResidencial').value.trim();
