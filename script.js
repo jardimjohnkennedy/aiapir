@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         printArea.innerHTML = `
             <div class="print-header">
-                <div class="logo-area"><img src="logo_aair.png" alt="ERRO: 'logo_aair.png' não encontrado!" class="print-logo"></div>
+                <div class="logo-area"><img src=" logo_aair.png " alt="ERRO: 'logo_aair.png' não encontrado!" class="print-logo"></div>
                 <div class="title-area"><h2>FICHA DO ASSOCIADO</h2></div>
                 <div class="photo-area"><img class="print-photo" src="${cliente.foto || placeholderImage}" alt="Foto"><span class="print-id">N2025/${cliente.codigo}</span></div>
             </div>
@@ -322,3 +322,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-limpar-foto-edicao').addEventListener('click', () => { document.getElementById('foto-preview-edicao').src = placeholderImage; document.getElementById('input-foto-edicao').value = ''; });
 
 });
+
