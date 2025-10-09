@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Associados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="tela-login" class="login-container">
+        <form id="form-login">
+            <h2>Acesso ao Sistema</h2>
+            <h3>Sistema de Cadastro de Associados</h3>
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+            <p id="login-error" class="error-message"></p>
+        </form>
+    </div>
+
+    <main id="app-container" style="display: none;">
+        <div class="container">
+            <div id="menu-inicial" class="page">
+                <header><h1>Cadastro de Associados</h1></header>
+                <nav>
+                    <button id="btn-menu-cadastrar">Cadastrar</button>
+                    <button id="btn-menu-pesquisar">Busca e Edição</button>
+                    <button id="btn-menu-backup">Gerenciamento de Dados</button>
+                    <button id="btn-menu-instrucoes">Instruções</button>
+                    <button id="btn-logout" class="btn-logout">Sair do Login</button>
+                </nav>
+            </div>
+
+            <div id="pagina-cadastro" class="page">
+                 <form id="form-cadastro" novalidate>
+                    <h2>Formulário de Cadastro</h2>
+                    <div class="form-grid">
+                        <div class="form-group photo-section">
+                            <img id="foto-preview-cadastro" src="https://via.placeholder.com/150" alt="Foto">
+                            <input type="file" id="input-foto-cadastro" accept="image/*" style="display: none;">
+                            <button type="button" onclick="document.getElementById('input-foto-cadastro').click()">Selecionar Imagem</button>
+                            <button type="button" id="btn-limpar-foto-cadastro">Limpar</button>
+                        </div>
+                        <div class="fields-section">
+                            <div class="form-row"><div class="form-group"><label>Código*</label><input type="text" id="codigo-cadastro" disabled></div><div class="form-group large"><label>Nome*</label><input type="text" id="nome-cadastro" required></div></div>
+                            <div class="form-row"><div class="form-group"><label>CPF/CNPJ*</label><input type="text" id="cpf-cadastro" required></div><div class="form-group"><label>RG</label><input type="text" id="rg-cadastro"></div><div class="form-group"><label>Estado Civil</label><select id="estado-civil-cadastro"><option>Solteiro</option><option>Casado</option><option>Divorciado</option><option>Viúvo</option><option>União Estável</option></select></div></div>
+                            <div class="form-row"><div class="form-group"><label>Data Nascimento</label><input type="date" id="data-nascimento-cadastro"></div><div class="form-group"><label>Local de Nascimento</label><input type="text" id="local-nascimento-cadastro" placeholder="Cidade/UF"></div><div class="form-group"><label>Nome Cônjuge</label><input type="text" id="nome-conjuge-cadastro"></div></div>
+                            <div class="form-row"><div class="form-group extra-large"><label>Endereço</label><input type="text" id="endereco-cadastro"></div><div class="form-group small"><label>Nº</label><input type="text" id="numero-cadastro"></div></div>
+                            <div class="form-row"><div class="form-group"><label>Bairro</label><input type="text" id="bairro-cadastro"></div><div class="form-group"><label>CEP</label><input type="text" id="cep-cadastro"></div><div class="form-group"><label>Aposentado desde</label><input type="text" id="aposentado-desde-cadastro"></div></div>
+                            <div class="form-row"><div class="form-group small"><label>UF</label><input type="text" id="uf-cadastro"></div><div class="form-group large"><label>Cidade</label><input type="text" id="cidade-cadastro"></div></div>
+                            <div class="form-row"><div class="form-group"><label>Telefone</label><input type="tel" id="telefone-cadastro"></div><div class="form-group"><label>Celular</label><input type="tel" id="celular-cadastro"></div><div class="form-group"><label>E-Mail</label><input type="email" id="email-cadastro"></div><div class="form-group"><label>Data de Cadastro</label><input type="text" id="data-cadastro-cadastro" disabled></div></div>
+                            <div class="form-row"><div class="form-group full-width"><label>Observações</label><textarea id="obs-cadastro" rows="3"></textarea></div></div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Cadastrar</button>
+                        <button type="button" class="btn-voltar">Voltar ao Menu</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="pagina-pesquisa" class="page">
+                <h2>Pesquisa e Edição de Cadastros</h2>
+                <div class="search-bar">
+                    <input type="text" id="pesquisa-nome" placeholder="Pesquisar por Nome">
+                    <input type="text" id="pesquisa-cpf" placeholder="Pesquisar por CPF">
+                    <input type="text" id="pesquisa-codigo" placeholder="Pesquisar por Código">
+                    <button id="btn-pesquisar">Pesquisar</button>
+                    <button id="btn-limpar-pesquisa">Limpar</button>
+                </div>
+                <div class="search-results">
+                    <table>
+                        <thead><tr><th>Código</th><th>Nome</th><th>CPF</th><th>Data Nasc.</th><th>Local Nasc.</th><th>Cônjuge</th></tr></thead>
+                        <tbody id="tabela-resultados"></tbody>
+                    </table>
+                </div>
+                <form id="form-edicao" novalidate>
+                    <h3>Resultado da Busca/Alteração</h3>
+                    <input type="hidden" id="id-edicao">
+                    <div class="form-grid">
+                        <div class="form-group photo-section">
+                            <img id="foto-preview-edicao" src="https://via.placeholder.com/150" alt="Foto">
+                            <input type="file" id="input-foto-edicao" accept="image/*" style="display: none;">
+                            <button type="button" onclick="document.getElementById('input-foto-edicao').click()">Alterar Imagem</button>
+                            <button type="button" id="btn-limpar-foto-edicao">Limpar Imagem</button>
+                        </div>
+                        <div class="fields-section">
+                            <div class="form-row"><div class="form-group"><label>Código</label><input type="text" id="codigo-edicao" disabled></div><div class="form-group large"><label>Nome</label><input type="text" id="nome-edicao"></div></div>
+                            <div class="form-row"><div class="form-group"><label>CPF/CNPJ</label><input type="text" id="cpf-edicao"></div><div class="form-group"><label>RG</label><input type="text" id="rg-edicao"></div><div class="form-group"><label>Estado Civil</label><select id="estado-civil-edicao"><option>Solteiro(a)</option><option>Casado(a)</option><option>Divorciado(a)</option><option>Viúvo(a)</option><option>União Estável</option></select></div></div>
+                            <div class="form-row"><div class="form-group"><label>Data Nascimento</label><input type="date" id="data-nascimento-edicao"></div><div class="form-group"><label>Local de Nascimento</label><input type="text" id="local-nascimento-edicao"></div><div class="form-group"><label>Nome Cônjuge</label><input type="text" id="nome-conjuge-edicao"></div></div>
+                            <div class="form-row"><div class="form-group extra-large"><label>Endereço</label><input type="text" id="endereco-edicao"></div><div class="form-group small"><label>Nº</label><input type="text" id="numero-edicao"></div></div>
+                            <div class="form-row"><div class="form-group"><label>Bairro</label><input type="text" id="bairro-edicao"></div><div class="form-group"><label>CEP</label><input type="text" id="cep-edicao"></div><div class="form-group"><label>Aposentado desde</label><input type="text" id="aposentado-desde-edicao"></div></div>
+                            <div class="form-row"><div class="form-group small"><label>UF</label><input type="text" id="uf-edicao"></div><div class="form-group large"><label>Cidade</label><input type="text" id="cidade-edicao"></div></div>
+                            <div class="form-row"><div class="form-group"><label>Telefone</label><input type="tel" id="telefone-edicao"></div><div class="form-group"><label>Celular</label><input type="tel" id="celular-edicao"></div><div class="form-group"><label>E-Mail</label><input type="email" id="email-edicao"></div><div class="form-group"><label>Data de Cadastro</label><input type="text" id="data-cadastro-edicao" disabled></div></div>
+                            <div class="form-row"><div class="form-group full-width"><label>Observações</label><textarea id="obs-edicao" rows="3"></textarea></div></div>
+                        </div>
+                    </div>
+                    <div class="audit-trail-container">
+                        <h4>Histórico de Alterações</h4>
+                        <div id="audit-trail-content" class="audit-trail-content"><p>Selecione um cliente para ver o histórico.</p></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Salvar Edição</button>
+                        <button type="button" id="btn-imprimir">Imprimir</button>
+                        <button type="button" id="btn-deletar">Deletar Cadastro</button>
+                        <button type="button" class="btn-voltar">&lt;&lt; Voltar ao Menu</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="pagina-instrucoes" class="page">
+                <h2>Instruções de Uso</h2>
+                <div class="instrucoes-content">
+                    <h3>1. Login</h3><p>Para acessar, utilize um dos usuários e senhas pré-cadastrados no código. O sistema só ficará visível após a autenticação.</p>
+                    <h3>2. Cadastrar</h3><p>No menu, clique em "Cadastrar". Preencha os campos e clique no botão "Cadastrar" no final do formulário para salvar.</p>
+                    <h3>3. Buscar e Editar</h3><p>No menu, clique em "Busca e Edição". Pesquise por nome, CPF ou código. Clique no cliente na lista para carregar seus dados. Edite as informações e "Salvar Edição" ou "Deletar Cadastro".</p>
+                    <h3>4. Histórico</h3><p>Ao selecionar um cliente na tela de "Busca e Edição", o histórico de alterações (quem e quando) aparecerá no rodapé.</p>
+                    <h3>5. Imprimir Ficha</h3><p>Após selecionar um cliente, clique em "Imprimir" para gerar a ficha de associado.</p>
+                    <h3>6. Exportar Excel</h3><p>No menu, clique em "Gerenciamento de Dados" para encontrar a opção de exportar um arquivo .xlsx com os dados principais.</p>
+                    <h3>7. Backup e Restauração</h3><p>Na tela de "Gerenciamento de Dados", você pode baixar um backup completo (.json) com todos os dados ou restaurar o sistema a partir de um backup salvo.</p>
+                    <h3>8. Sair</h3><p>Clique em "Sair do Login" no menu para retornar à tela de autenticação.</p>
+                    <div class="credits"><p>Sistema desenvolvido por Gemini (IA do Google).</p></div>
+                </div>
+                <div class="form-actions"><button type="button" class="btn-voltar">Voltar ao Menu</button></div>
+            </div>
+
+            <div id="pagina-backup" class="page">
+                <h2>Gerenciamento de Dados</h2>
+                <div class="backup-option">
+                    <h3>Exportar Resumo para Excel</h3>
+                    <p>Cria uma planilha simples (.xlsx) com código, nome, telefone e e-mail de todos os associados.</p>
+                    <button id="btn-exportar-excel">Exportar para Excel (.xlsx)</button>
+                </div>
+                <div class="backup-option">
+                    <h3>Fazer Backup Completo</h3>
+                    <p>Salva uma cópia de segurança completa de <strong>todos</strong> os dados (incluindo fotos e históricos) em um arquivo .json. Guarde este arquivo em um local seguro.</p>
+                    <button id="btn-fazer-backup">Fazer Backup (.json)</button>
+                </div>
+                <div class="backup-option restore">
+                    <h3>Restaurar Backup</h3>
+                    <p class="warning"><strong>ATENÇÃO:</strong> Esta ação irá <strong>substituir todos os dados atuais</strong> pelos dados do arquivo de backup. Esta operação não pode ser desfeita.</p>
+                    <input type="file" id="input-restore-file" accept=".json">
+                    <button id="btn-restaurar-backup">Restaurar a partir de um arquivo</button>
+                </div>
+                <div class="form-actions"><button type="button" class="btn-voltar">Voltar ao Menu</button></div>
+            </div>
+        </div>
+    </main>
+    
+    <div id="pagina-impressao"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
